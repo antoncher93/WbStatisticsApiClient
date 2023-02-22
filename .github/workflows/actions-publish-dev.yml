@@ -32,8 +32,9 @@ jobs:
       - name: Test
         run: dotnet test --no-restore --verbosity normal
       - name: Pack
-        run: dotnet pack --configuration Release /p:Version=${VERSION} --output .
+        run: dotnet pack --configuration Release -o _out -p:Version=$VERSION -p:PackageVersion=$VERSION
       - name: Publish (dev)
-        run: dotnet nuget push Ancher.Marketplaces.WB.Statistic.Api.${VERSION}-dev.nupkg --source https://nuget.pkg.github.com/acraven/index.json --api-key ${GITHUB_TOKEN}
+        run: echo "${NUGET_TOKEN}"
+        # run: dotnet nuget push Ancher.Marketplaces.WB.Statistic.Api.${VERSION}-dev.nupkg --source https://nuget.pkg.github.com/acraven/index.json --api-key ${GITHUB_TOKEN}
         env:
-          NUGET_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NUGET_TOKEN: ${{ secrets.NUGET_TOKEN }}
