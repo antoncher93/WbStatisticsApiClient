@@ -31,8 +31,10 @@ jobs:
         run: dotnet build --configuration Release --no-restore
       - name: Test
         run: dotnet test --no-restore --verbosity normal
+      - name: Version
+        run: echo ${VERSION}
       - name: Pack
-        run: dotnet pack --configuration Release -o _out -p:Version=$VERSION -p:PackageVersion=$VERSION
+        run: dotnet pack --configuration Release -o _out -p:Version=${VERSION} -p:PackageVersion=${VERSION}
       - name: Publish (dev)
         run: echo "${NUGET_TOKEN}"
         # run: dotnet nuget push Ancher.Marketplaces.WB.Statistic.Api.${VERSION}-dev.nupkg --source https://nuget.pkg.github.com/acraven/index.json --api-key ${GITHUB_TOKEN}
