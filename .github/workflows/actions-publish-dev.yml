@@ -7,13 +7,15 @@ on:
       - '*/*'       # matches every branch containing a single '/'
       - '**'        # matches every branch
       - '!master'   # excludes master
+env:
+  VERSION: 0.0.1
 
 jobs:
-  build:
+  build-test-publish:
     runs-on: windows-latest
     strategy:
       matrix:
-        dotnet-version: ['3.0', '3.1.x', '5.0.x' ]
+        dotnet-version: ['3.1.x']
     steps:
       - name: Check out repository code
         uses: actions/checkout@v3
@@ -29,3 +31,11 @@ jobs:
         run: dotnet build --configuration Release --no-restore
       - name: Test
         run: dotnet test --no-restore --verbosity normal
+      - name: Set Version
+        run: 
+      - name: Pack
+        run: dotnet pack --configuration Release /p:Version=${VERSION} --output .
+      - name: Publish (dev)
+        run: dotnet nuget push Ancher.Marketplaces.WB.Statistic.Api.${VERSION}-dev.nupkg --source https://nuget.pkg.github.com/acraven/index.json --api-key ${GITHUB_TOKEN}
+        env:
+          NUGET_TOKEN: ${{ secrets.GITHUB_TOKEN }}
