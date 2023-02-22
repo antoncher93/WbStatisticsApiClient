@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ancher.Marketplaces.WB.Statistics.Api", "Ancher.Marketplaces.WB.Statistics.Api\Ancher.Marketplaces.WB.Statistics.Api.csproj", "{F430B39B-9930-4AE5-8B01-957D50A3B041}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ancher.Marketplaces.WB.Statistics.Api.UnitTests", "Ancher.Marketplaces.WB.Statistics.Api.UnitTests\Ancher.Marketplaces.WB.Statistics.Api.UnitTests.csproj", "{3DC6EEA6-87DB-4843-8F1A-FABA2B85FDF9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F430B39B-9930-4AE5-8B01-957D50A3B041}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F430B39B-9930-4AE5-8B01-957D50A3B041}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F430B39B-9930-4AE5-8B01-957D50A3B041}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F430B39B-9930-4AE5-8B01-957D50A3B041}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3DC6EEA6-87DB-4843-8F1A-FABA2B85FDF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DC6EEA6-87DB-4843-8F1A-FABA2B85FDF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3DC6EEA6-87DB-4843-8F1A-FABA2B85FDF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3DC6EEA6-87DB-4843-8F1A-FABA2B85FDF9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
