@@ -35,6 +35,6 @@ jobs:
       - name: Environment Variables
         run: env
       - name: Pack
-        run: dotnet pack --configuration Release -o _out -p:Version=${{ env.VERSION }} -p:PackageVersion=${{ env.VERSION }}
+        run: dotnet pack --configuration Release -o ./ -p:Version=${{ env.VERSION }} -p:PackageVersion=${{ env.VERSION }}
       - name: Publish (dev)
-        run: dotnet nuget push ./_out/*.nupkg --source https://www.nuget.org --api-key ${{ secrets.NUGET_TOKEN }}
+        run: dotnet nuget push ./*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_TOKEN }}
