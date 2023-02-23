@@ -37,4 +37,4 @@ jobs:
       - name: Pack
         run: dotnet pack --configuration Release -o ./ -p:Version=${{ env.VERSION }} -p:PackageVersion=${{ env.VERSION }}
       - name: Publish (dev)
-        run: dotnet nuget push ./*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_TOKEN }}
+        run: dotnet nuget push *.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_TOKEN }}
