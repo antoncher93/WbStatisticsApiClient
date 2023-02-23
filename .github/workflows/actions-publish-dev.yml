@@ -37,4 +37,4 @@ jobs:
       - name: Pack
         run: dotnet pack --configuration Release -o _out -p:Version=${{ env.VERSION }} -p:PackageVersion=${{ env.VERSION }}
       - name: Publish (dev)
-        run: dotnet nuget push Ancher.Marketplaces.WB.Statistic.Api.${VERSION}-dev.nupkg --source https://www.nuget.org --api-key ${{ secrets.NUGET_TOKEN }}
+        run: dotnet nuget push Ancher.Marketplaces.WB.Statistic.Api.${VERSION}-dev.nupkg --root ./_out --source https://www.nuget.org --api-key ${{ secrets.NUGET_TOKEN }}
