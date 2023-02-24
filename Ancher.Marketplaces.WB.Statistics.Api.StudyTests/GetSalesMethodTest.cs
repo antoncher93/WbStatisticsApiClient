@@ -7,7 +7,7 @@ namespace Ancher.Marketplaces.WB.Statistics.Api.StudyTests;
 
 public class GetSalesMethodTest
 {
-    [Fact]
+    [Fact(Skip = "Run olny for manual test")]
     public async Task ReturnsOkWhenApiKeyIsValid()
     {
         var sut = SutFactory.Create();
@@ -21,7 +21,7 @@ public class GetSalesMethodTest
             .BeOfType<GetSalesResult.SuccessResult>();
     }
     
-    [Fact]
+    [Fact(Skip = "Run olny for manual test")]
     public async Task ReturnsUnauthorizedWhenApiKeyIsValid()
     {
         var sut = SutFactory.Create();
