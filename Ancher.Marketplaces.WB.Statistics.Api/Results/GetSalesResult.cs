@@ -8,7 +8,7 @@ public class GetSalesResult
         List<Sale> sales)
     {
         return new GetSalesResult(
-            successResult: new Success(sales));
+            success: new SuccessResult(sales));
     }
 
     public static GetSalesResult FromError(
@@ -16,18 +16,18 @@ public class GetSalesResult
         string message)
     {
         return new GetSalesResult(
-            errorResult: new Error(
+            error: new ErrorResult(
                 httpStatusCode: httpStatusCode,
                 message: message));
     }
     
-    public Success? SuccessResult { get; }
+    public SuccessResult? Success { get; }
     
-    public Error? ErrorResult { get; }
+    public ErrorResult? Error { get; }
     
-    public class Success
+    public class SuccessResult
     {
-        public Success(
+        public SuccessResult(
             List<Sale> sales)
         {
             Sales = sales;
@@ -36,9 +36,9 @@ public class GetSalesResult
         public List<Sale> Sales { get; }
     }
     
-    public class Error
+    public class ErrorResult
     {
-        public Error(
+        public ErrorResult(
             HttpStatusCode httpStatusCode,
             string message)
         {
@@ -52,14 +52,14 @@ public class GetSalesResult
     }
 
     private GetSalesResult(
-        Success successResult)
+        SuccessResult success)
     {
-        SuccessResult = successResult;
+        Success = success;
     }
 
     private GetSalesResult(
-        Error errorResult)
+        ErrorResult error)
     {
-        ErrorResult = errorResult;
+        Error = error;
     }
 }
