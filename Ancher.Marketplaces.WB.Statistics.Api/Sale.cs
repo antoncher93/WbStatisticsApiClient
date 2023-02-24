@@ -21,7 +21,7 @@ public class Sale
         string regionName,
         int incomeId,
         string saleId,
-        int odId,
+        long odId,
         decimal spp,
         decimal forPay,
         decimal finishedPrice,
@@ -102,7 +102,8 @@ public class Sale
     [JsonPropertyName("saleID")]
     public string Id { get; set; }
     
-    public int OdId { get; set; }
+    [JsonPropertyName("odid")]
+    public long OdId { get; set; }
     
     public decimal Spp { get; set; }
     

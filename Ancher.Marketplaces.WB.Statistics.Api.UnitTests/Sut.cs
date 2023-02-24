@@ -24,7 +24,7 @@ public class Sut
     {
         return _statsApiClient.GetSalesAsync(
             apiKey: apiKey,
-            date: date,
+            dateFrom: date,
             flag: flag,
             cancellationToken: CancellationToken.None);
     }

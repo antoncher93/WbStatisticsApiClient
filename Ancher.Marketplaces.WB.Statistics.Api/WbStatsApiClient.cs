@@ -1,6 +1,8 @@
 ﻿using System.Net;
 using System.Net.Http.Json;
+using System.Web;
 using Ancher.Marketplaces.WB.Statistics.Api.Results;
+using Microsoft.AspNetCore.WebUtilities;
 
 namespace Ancher.Marketplaces.WB.Statistics.Api;
 
@@ -16,31 +18,36 @@ internal class WbStatsApiClient : IStatsApiClient
     }
 
     public async Task<GetSalesResult> GetSalesAsync(string apiKey,
-        DateTime date,
+        DateTime dateFrom,
         bool flag,
         CancellationToken cancellationToken = default)
     {
+       
+
+        var query = new Dictionary<string, string>()
+        {
+            ["dateFrom"] = dateFrom.ToString("u"),
+            ["flag"] = flag ? "1" : "0",
+        };
+
+        var uri = QueryHelpers.AddQueryString(ApiV1SupplierSales, query);
+        
         var request = new HttpRequestMessage(
             method: HttpMethod.Get,
-            requestUri: ApiV1SupplierSales);
+            requestUri: uri);
         
         request.Headers.Add(
             name: "Authorization",
             value: apiKey);
-
-        request.Content = new FormUrlEncodedContent(new List<KeyValuePair<string, string>>()
-        {
-            new("date", date.ToString("u")),
-            new("flag", flag ? "1" : "0"),
-        });
-
+        
         var response = await _httpClient.SendAsync(
             request: request,
             cancellationToken: cancellationToken);
-
+        
         switch (response.StatusCode)
         {
             case HttpStatusCode.OK:
+                
                 var sales = await response.Content.ReadFromJsonAsync<List<Sale>>(
                     cancellationToken: cancellationToken);
                 
@@ -51,7 +58,7 @@ internal class WbStatsApiClient : IStatsApiClient
                 var message = await response.Content.ReadAsStringAsync(
                     cancellationToken: cancellationToken);
                 
-                return GetSalesResult.FromError(
+                 return GetSalesResult.FromError(
                     httpStatusCode: response.StatusCode,
                     message: message);
         }

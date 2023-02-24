@@ -7,6 +7,7 @@ on:
 env:
   VERSION: 1.0.${{ github.run_number }}
   NUGET_TOKEN: ${{ secrets.NUGET_TOKEN }}
+  WB_STUDY_API_KEY: ${{ secrets.WB_STUDY_API_KEY }}
 
 jobs:
   build-test-publish:
