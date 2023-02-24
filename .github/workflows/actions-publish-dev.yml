@@ -39,6 +39,4 @@ jobs:
       - name: Publish (dev)
         env:
           NUGET_TOKEN: ${{ secrets.NUGET_TOKEN }}
-          ABC_NAME: ${{ secrets.ABC_NAME }}
-        run: echo ${{ env.ABC_NAME }}
-#        run: dotnet nuget push *.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ env.NUGET_TOKEN }}
+        run: dotnet nuget push *.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ env.NUGET_TOKEN }}
