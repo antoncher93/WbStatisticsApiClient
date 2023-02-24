@@ -39,4 +39,4 @@ jobs:
       - name: Publish (dev)
         env:
           NUGET_TOKEN: ${{ secrets.NUGET_TOKEN }}
-        run: dotnet nuget push *.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ env.NUGET_TOKEN }}
+        run: dotnet nuget push *.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ env.NUGET_TOKEN }} --skip-duplicate
