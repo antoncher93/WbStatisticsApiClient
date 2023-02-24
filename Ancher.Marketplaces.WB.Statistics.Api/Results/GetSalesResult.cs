@@ -51,6 +51,23 @@ public class GetSalesResult
         public string Message { get; }
     }
 
+    public T Match<T>(
+        Func<SuccessResult, T> onSuccess,
+        Func<ErrorResult, T> onError)
+    {
+        if (this.Success != null)
+        {
+            return onSuccess(this.Success);
+        }
+
+        if (this.Error != null)
+        {
+            return onError(this.Error);
+        }
+
+        throw new NotSupportedException();
+    }
+
     private GetSalesResult(
         SuccessResult success)
     {
